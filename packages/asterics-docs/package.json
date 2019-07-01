@@ -1,0 +1,43 @@
+{
+  "name": "asterics-docs",
+  "version": "0.0.0-alpha.0",
+  "description": "AsTeRICS Documentation Utility (CLI)",
+  "license": "GPL-3.0",
+  "main": "index.js",
+  "bin": {
+    "asterics-docs": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asterics/asterics-docs.js.git",
+    "directory": "packages/asterics-docs"
+  },
+  "keywords": [
+    "AsTeRICS",
+    "documentation",
+    "utility"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Alija Sabic",
+  "maintainers": [
+    {
+      "name": "Alija Sabic",
+      "email": "sabic@technikum-wien.com"
+    }
+  ],
+  "homepage": "https://github.com/asterics/asterics-docs.js#readme",
+  "bugs": {
+    "url": "https://github.com/asterics/asterics-docs.js/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "yargs": "^13.2.4"
+  },
+  "engines": {
+    "node": ">=10.15"
+  }
+}
