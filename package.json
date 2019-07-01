@@ -1,7 +1,11 @@
 {
-  "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/asterics-docs",
+    "packages/@asterics-docs/*"
+  ],
   "devDependencies": {
-    "lerna": "^3.15.0"
+    "lerna": "^3.15.0",
+    "typescript": "^3.5.2"
   }
 }
