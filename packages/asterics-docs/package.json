@@ -1,6 +1,6 @@
 {
   "name": "asterics-docs",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.1-alpha.0",
   "description": "AsTeRICS Documentation Utility (CLI)",
   "license": "GPL-3.0",
   "main": "index.js",
@@ -39,5 +39,6 @@
   },
   "engines": {
     "node": ">=10.15"
-  }
+  },
+  "gitHead": "ad642d0530868c3246767d6c093a6e28f90d829f"
 }
