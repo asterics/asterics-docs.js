@@ -1,0 +1,43 @@
+{
+  "name": "@asterics-docs/shared-utils",
+  "version": "0.0.0-alpha.0",
+  "description": "shared utilities for asterics-docs",
+  "license": "GPL-3.0",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "lib",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asterics/asterics-docs.js.git",
+    "directory": "packages/@asterics-docs/shared-utils"
+  },
+  "keywords": [
+    "AsTeRICS",
+    "documentation",
+    "utility"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Alija Sabic",
+  "maintainers": [
+    {
+      "name": "Alija Sabic",
+      "email": "sabic@technikum-wien.com"
+    }
+  ],
+  "homepage": "https://github.com/asterics/asterics-docs.js/packages/@asterics-docs/shared-utils#readme",
+  "bugs": {
+    "url": "https://github.com/asterics/asterics-docs.js/issues"
+  },
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=10.15"
+  }
+}
