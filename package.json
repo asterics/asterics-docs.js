@@ -4,8 +4,23 @@
     "packages/asterics-docs",
     "packages/@asterics-docs/*"
   ],
+  "description": "AsTeRICS Documentation Utility",
+  "scripts": {
+    "bootstrap": "yarn && lerna bootstrap && yarn build",
+    "build": "lerna run build",
+    "build:types": "lerna run tsc --emitDeclarationOnly",
+    "type-check": "lerna run tsc -- --noEmit",
+    "type-check:watch": "yarn type-check -- --watch"
+  },
   "devDependencies": {
-    "lerna": "^3.15.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2",
+    "@types/node": "^10.14.10",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "lerna": "^3.15.0"
   }
 }
