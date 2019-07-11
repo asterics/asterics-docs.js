@@ -34,7 +34,12 @@
     "url": "https://github.com/asterics/asterics-docs.js/issues"
   },
   "scripts": {
+    "build": "babel src --config-file ../../../babel.config.js --out-dir lib --extensions \".ts,.tsx\" --source-maps",
     "tsc": "tsc"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "semver": "^6.2.0"
   },
   "engines": {
     "node": ">=10.15"
