@@ -32,9 +32,10 @@
     "url": "https://github.com/asterics/asterics-docs.js/issues"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "start": "node index.js"
   },
   "dependencies": {
+    "@asterics-docs/core": "^0.0.2-alpha.0",
     "yargs": "^13.2.4"
   },
   "engines": {
