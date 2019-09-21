@@ -1,0 +1,28 @@
+{
+  "name": "@asterics-docs/vuepress-theme-docs",
+  "version": "0.0.1-beta.10+2bfdde2",
+  "description": "Vuepress theme for AsTeRICS Docs",
+  "license": "GPL-3.0",
+  "author": "Alija Sabic <sabic.alija@gmail.com>",
+  "homepage": "https://github.com/asterics/asterics-docs.js#readme",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asterics/asterics-docs.js.git",
+    "path": "packages/@asterics-docs/vuepress-theme-docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/asterics/asterics-docs.js/issues"
+  },
+  "dependencies": {
+    "@vuepress/theme-default": "^1.0.4"
+  },
+  "gitHead": "2bfdde2f5cfb7ad949cdc58e21aef5fb38aeddf2"
+}
