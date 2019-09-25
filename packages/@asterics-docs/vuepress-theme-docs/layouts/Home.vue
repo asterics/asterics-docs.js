@@ -1,16 +1,31 @@
 <template>
-  <ParentLayout>
-    <Jumbo slot="page-top" />
-  </ParentLayout>
+  <BasicLayout>
+    <div slot="content">
+      <Jumbo class="jumbotron" />
+      <div class="theme-default-content">
+        <Content />
+      </div>
+    </div>
+  </BasicLayout>
 </template>
 
 <script>
-import ParentLayout from "@parent-theme/layouts/Layout.vue";
+import BasicLayout from "@theme/layouts/BasicLayout.vue";
 import Jumbo from "@theme/components/Jumbo.vue";
 export default {
   components: {
-    ParentLayout,
+    BasicLayout,
     Jumbo
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.theme-default-content {
+  max-width: 1400px;
+
+  &:not(.custom) > *:first-child {
+    margin-top: 0;
+  }
+}
+</style>
