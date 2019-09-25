@@ -27,8 +27,6 @@ export default {
 
 <style lang="stylus" scoped>
 .jumbo-header {
-  // font-size: 4.5rem;
-  // font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
