@@ -1,6 +1,6 @@
 <template>
   <ParentLayout>
-    <Jumbo slot="page-top"/>
+    <Jumbo slot="page-top" />
   </ParentLayout>
 </template>
 

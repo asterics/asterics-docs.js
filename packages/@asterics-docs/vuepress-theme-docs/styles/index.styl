@@ -16,10 +16,12 @@
 // .nav-link
 //     padding: 0
 
-:focus 
-    outline-width: 3px
-    outline-style: solid
-    outline-color: $info
+:focus
+    outline: 3px solid $accentColor !important
+    outline-offset: 0.1rem 0.1rem !important
+
+a:hover
+    text-decoration: none !important
 
 // .theme-default-content > h1:first-child {
 //     padding-top: 2.5rem;
@@ -31,3 +33,30 @@
 //         padding-top: 5rem;
 //     }
 // }
+
+img.emoji {
+  height: 1.2rem;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+}
+.sw-update-popup {
+  border: 2px solid #0ea1d2 !important;
+}
+.sw-update-popup > button {
+  border: none !important;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  font-size: 1.1rem !important;
+  color: #fff !important;
+  background-color: #0ea1d2 !important;
+  padding: .8rem 1.6rem !important;
+  border-radius: 4px !important;
+  transition: background-color .1s ease !important;
+  box-sizing: border-box !important;
+  border-bottom: 1px solid #0f303e !important;
+}
