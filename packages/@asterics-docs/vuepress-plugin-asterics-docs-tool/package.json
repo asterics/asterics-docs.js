@@ -1,0 +1,22 @@
+{
+  "name": "@asterics-docs/vuepress-plugin-asterics-docs-tool",
+  "version": "0.0.0",
+  "description": "Vuepress cli plugin for documentation management of AsTeRICS",
+  "license": "GPL-3.0",
+  "author": "Alija Sabic <sabic.alija@gmail.com>",
+  "homepage": "https://github.com/asterics/asterics-docs.js#readme",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asterics/asterics-docs.js.git",
+    "path": "packages/@asterics-docs/vuepress-plugin-asterics-docs-tool"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/asterics/asterics-docs.js/issues"
+  }
+}
