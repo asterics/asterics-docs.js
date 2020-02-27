@@ -6,6 +6,9 @@
   "author": "Alija Sabic <sabic.alija@gmail.com>",
   "homepage": "https://github.com/asterics/asterics-docs.js#readme",
   "main": "index.js",
+  "bin": {
+    "asterics-docs": "cli.js"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
