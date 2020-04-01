@@ -1,1 +1,1 @@
-console.log("Hello");
+module.exports = null;
