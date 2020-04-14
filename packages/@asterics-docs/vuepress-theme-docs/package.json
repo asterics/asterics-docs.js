@@ -41,7 +41,8 @@
     "markdown-it-sup": "^1.0.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.0",
-    "twemoji": "^12.1.3"
+    "twemoji": "^12.1.3",
+    "vuex": "^3.1.3"
   },
   "gitHead": "2bfdde2f5cfb7ad949cdc58e21aef5fb38aeddf2"
 }
