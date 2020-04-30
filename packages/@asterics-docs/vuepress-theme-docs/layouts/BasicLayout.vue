@@ -6,34 +6,43 @@
     @touchend="onTouchEnd"
   >
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
-    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
+
+    <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
     <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-      <slot name="sidebar-top" slot="top" />
-      <slot name="sidebar-bottom" slot="bottom" />
+      <template #top>
+        <slot name="sidebar-top" />
+      </template>
+      <template #bottom>
+        <slot name="sidebar-bottom" />
+      </template>
     </Sidebar>
 
-    <div class="page">
+    <perfect-scrollbar tag="main" class="page">
       <slot name="content"></slot>
-      <PageEdit />
-    </div>
+    </perfect-scrollbar>
   </div>
 </template>
 
 <script>
-import Navbar from "@parent-theme/components/Navbar.vue";
-import Sidebar from "@parent-theme/components/Sidebar.vue";
-import PageEdit from "@parent-theme/components/PageEdit.vue";
+import Navbar from "@theme/components/Navbar.vue";
+import Sidebar from "@theme/components/Sidebar.vue";
 import { resolveSidebarItems } from "@parent-theme/util";
 
 export default {
-  components: { Navbar, Sidebar, PageEdit },
+  name: "Layout",
+
+  components: {
+    Sidebar,
+    Navbar,
+  },
 
   data() {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
     };
   },
+
   computed: {
     shouldShowNavbar() {
       const { themeConfig } = this.$site;
@@ -49,50 +58,49 @@ export default {
         this.$themeLocaleConfig.nav
       );
     },
+
     shouldShowSidebar() {
       const { frontmatter } = this.$page;
-      return (
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
-      );
+      return !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length;
     },
+
     sidebarItems() {
-      return resolveSidebarItems(
-        this.$page,
-        this.$page.regularPath,
-        this.$site,
-        this.$localePath
-      );
+      return resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
     },
+
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass;
       return [
         {
           "no-navbar": !this.shouldShowNavbar,
           "sidebar-open": this.isSidebarOpen,
-          "no-sidebar": !this.shouldShowSidebar
+          "no-sidebar": !this.shouldShowSidebar,
         },
-        userPageClass
+        userPageClass,
       ];
-    }
+    },
   },
+
   mounted() {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false;
     });
   },
+
   methods: {
     toggleSidebar(to) {
       this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
+      this.$emit("toggle-sidebar", this.isSidebarOpen);
     },
-    // side wipe
+
+    // side swipe
     onTouchStart(e) {
       this.touchStart = {
         x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY
+        y: e.changedTouches[0].clientY,
       };
     },
+
     onTouchEnd(e) {
       const dx = e.changedTouches[0].clientX - this.touchStart.x;
       const dy = e.changedTouches[0].clientY - this.touchStart.y;
@@ -103,7 +111,7 @@ export default {
           this.toggleSidebar(false);
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>

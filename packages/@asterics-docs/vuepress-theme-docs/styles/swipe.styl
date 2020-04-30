@@ -1,0 +1,61 @@
+.swiper
+  box-shadow 1px 1px 3px 1px darken($borderColor,20%)
+  .dark-mode &
+    box-shadow 1px 1px 3px 1px darken($darkModeTextColor,20%)
+.swiper-button-prev, .swiper-button-next
+  color $accentColor
+  top $mediaHeight + ($contentHeight / 2) + ($slideMarginBottom / 2)
+.swiper-button-prev
+  left 20px
+.swiper-button-next
+  right 20px
+.swiper-pagination
+  transform scale(2) !important
+  width 160px !important
+  margin-left -80px
+  bottom 20px !important
+  .swiper-pagination-bullet
+    .dark-mode &
+      background-color $darkModeTextColor
+    &.swiper-pagination-bullet-active
+      background-color $accentColor
+
+.slide
+  display flex
+  flex-flow column wrap
+  .media
+    height $mediaHeight
+    .media-default
+      background-color $accentColor
+      width 100%
+      height 100%
+  .content, .controls
+    min-height $contentHeight
+    margin $slideMarginBottom 70px
+    margin-top 0
+    width fit-content
+  .controls
+    margin $slideMarginBottom auto
+    margin-top 0
+  .badge
+    font-size 0.9rem
+    font-weight 500
+    display flex
+    flex-flow row nowrap
+    padding 4px 4px
+    margin 2px
+    margin-right 4px
+    margin-top 0.5rem
+    background-color $accentColor
+    color white
+    border-radius 0.25rem
+    box-shadow 1px 1px 3px 1px darken($accentColor,80%)
+
+@media (max-width: $MQMobile)
+  .slide .content
+    margin $slideMarginBottom 30px
+
+@media (max-width: $MQMobileNarrow)
+  .swiper-pagination
+    width 100px !important
+    margin-left -50px

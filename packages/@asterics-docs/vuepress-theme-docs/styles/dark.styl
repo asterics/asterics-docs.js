@@ -1,0 +1,31 @@
+html.dark-mode
+  background-color $darkModeBg !important
+
+  .navbar,
+  .sidebar,
+  .search-box input,
+  .nav-dropdown
+    border-color $darkModeTextColor
+  
+  {$contentClass}:not(.custom)
+    h1, h2, h3, h4, h5, h6
+      border-color $darkModeTextColor
+
+  html,
+  body,
+  input,
+  .links,
+  .dropdown-title,
+  .navbar,
+  .nav-dropdown,
+  .nav-item > .nav-link,
+  .search-box,
+  .site-name,
+  .sidebar,
+  .sidebar-link,
+  .sidebar-heading
+    background-color $darkModeBg !important
+    color $darkModeTextColor !important
+
+  .custom-block
+    background-color lighten($darkModeBg,5%) !important

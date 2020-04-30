@@ -1,0 +1,94 @@
+
+.model-controls-wrapper, .model-controls-wrapper
+  display flex
+  flex-flow row nowrap
+  justify-content center
+  align-items center
+  margin 3em auto
+  margin-bottom 0em
+  width fit-content
+  .control
+    margin-right 2em
+    &:last-child
+      margin-right 0
+
+  .icon-background
+    cursor pointer
+    width 70px
+    height 70px
+    border-radius 50%
+    background-color $accentColor
+    box-shadow 2px 2px 3px 1px darken($borderColor,50%)
+    .dark-mode &
+      box-shadow 2px 2px 3px 1px darken($darkModeTextColor,50%)
+    // transition box-shadow 0.5s ease
+    &:hover
+      background-color lighten($accentColor,10%)
+      box-shadow 3px 3px 4px 1px darken($borderColor,50%)
+      .dark-mode &
+        box-shadow 3px 3px 4px 1px darken($darkModeTextColor,30%)
+    &.small
+      width 50px
+      height 50px
+      .icon
+        width 34px
+        height 34px
+        margin 0
+        &.small
+          width 24px
+          height 24px
+          padding 13px
+    &.dark
+      background-color darken($accentColor,70%)
+      &:hover
+        background-color darken($accentColor,60%)
+    &.external
+      background-color darken($accentColor,30%)
+      &:hover
+        background-color darken($accentColor,20%)
+    .icon
+      color white
+      width 36px
+      height 36px
+      padding 17px
+      svg
+        width 100%
+        height 100%
+.disabled .icon-background
+  background-color darken($borderColor,50%) !important
+  cursor initial
+  &:hover
+    box-shadow 2px 2px 3px 1px darken($borderColor,50%)
+  .dark-mode &:hover
+    box-shadow 2px 2px 3px 1px darken($darkModeTextColor,50%)
+
+@media (max-width: $MQMobile)
+  .model-controls-wrapper
+    // flex-flow column nowrap
+    .control
+      margin-right 2rem
+@media (max-width: $MQMobileNarrow)
+  .model-controls-wrapper
+    margin 2em auto 1em auto
+    .control
+      margin-right 0.75rem
+      .icon-background
+        width 40px
+        height 40px
+        &.small
+          width 30px
+          height 30px
+        .icon
+          width 20px
+          height 20px
+          padding 10px
+          &.small
+            width 14px
+            height 14px
+            padding 0
+            & svg
+              width 14px
+              height 14px
+              padding 8px
+  svg#asterics-logo
+    transform scale(1.25)
