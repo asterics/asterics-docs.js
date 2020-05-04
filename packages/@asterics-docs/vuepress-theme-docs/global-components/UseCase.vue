@@ -1,7 +1,7 @@
 <template>
   <swiper-slide>
     <div class="slide" ref="slide">
-      <Media :content="media" :stop="stop" :active="active" />
+      <Media :content="media" :active="active" />
       <div class="content">
         <Description :title="title"><slot>Use Case</slot></Description>
       </div>
@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      active: false,
+      active: true,
     };
   },
   methods: {
@@ -46,10 +46,14 @@ export default {
       return Array.from(this.$refs.slide.parentNode.classList) || [];
     },
     onSlideChangeTransitionStart() {
-      this.active = true;
+      if (this.stop) {
+        this.active = true;
+      }
     },
     onSlideChangeTransitionEnd() {
-      this.active = this.classes().includes("swiper-slide-active");
+      if (this.stop) {
+        this.active = this.classes().includes("swiper-slide-active");
+      }
     },
   },
   created() {
@@ -66,6 +70,13 @@ export default {
 <style lang="stylus" scoped></style>
 
 <style lang="stylus">
+
+.swiper-slide
+  margin 1rem 0
+  box-shadow 1px 1px 3px 1px darken($borderColor,20%)
+  .dark-mode &
+    box-shadow 1px 1px 3px 1px darken($darkModeTextColor,20%)
+
 @media (max-width: $MQMobile)
   .swiper-button-prev, .swiper-button-next
     display none

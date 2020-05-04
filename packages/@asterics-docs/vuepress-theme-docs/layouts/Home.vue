@@ -32,9 +32,9 @@
       <JumboTron id="home-jumbotron" :class="{ mounted: isMounted, lock: lockJumbotron }">
         <Content slot-key="jumbotron" />
       </JumboTron>
-      <div class="theme-default-content">
+      <!-- <div class="theme-default-content">
         <Content slot-key="slideshow" />
-      </div>
+      </div> -->
       <Content class="theme-default-content" />
       <PageEdit />
 
