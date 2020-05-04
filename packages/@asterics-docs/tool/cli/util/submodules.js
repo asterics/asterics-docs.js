@@ -1,4 +1,4 @@
-const { readFileSync } = require("fs");
+const { readFileSync, existsSync } = require("fs");
 const { join, relative, resolve } = require("path");
 const { exec } = require("child_process");
 
@@ -101,7 +101,10 @@ function updateSubmodule(submodule, position, useReference = true) {
     const cwd = process.cwd();
     const path = join(cwd, submodule.path);
     const reference = submodule.config.reference;
-    const ref = reference && useReference ? `--reference ${resolve(cwd, reference)}` : "";
+    const ref =
+      reference && useReference && referenceExists(reference)
+        ? `--reference ${resolve(cwd, reference)}`
+        : "";
     const cmd = `git ${gitwd(cwd)} submodule update --init --progress ${ref} ${path}`;
     const label = `Updating submodule ${green(submodule.name)}`;
     writeLine(`${label} ...`, position);
@@ -113,6 +116,11 @@ function updateSubmodule(submodule, position, useReference = true) {
     });
     subprocess.stderr.on("data", (chunk) => processProgress(submodule, position, chunk));
   });
+}
+
+function referenceExists(reference) {
+  const path = join(process.cwd(), reference);
+  return existsSync(path);
 }
 
 function checkoutSubmodule(submodule, position = 0, branch = "master") {
