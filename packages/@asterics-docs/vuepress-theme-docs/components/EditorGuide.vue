@@ -13,7 +13,7 @@ export default {
   name: "EditorGuide",
   data() {
     return {
-      path: "/guide/editor-guide.html",
+      path: "/guide/editor.html",
     };
   },
   computed: {
@@ -22,11 +22,8 @@ export default {
     },
     valid() {
       return (
-        typeof this.$site.pages.find((regularPath) => regularPath === this.path) !== "undefined"
+        typeof this.$site.pages.find(({ regularPath }) => regularPath === this.path) !== "undefined"
       );
-    },
-    page() {
-      return this.$site.pages.find((regularPath) => regularPath === this.path);
     },
   },
 };

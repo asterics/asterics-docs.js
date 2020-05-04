@@ -9,7 +9,7 @@ export default {
   name: "DocsGuide",
   data() {
     return {
-      path: "/guide/docs-guide.html",
+      path: "/guide/docs.html",
     };
   },
   computed: {
@@ -18,7 +18,7 @@ export default {
     },
     valid() {
       return (
-        typeof this.$site.pages.find((regularPath) => regularPath === this.path) !== "undefined"
+        typeof this.$site.pages.find(({ regularPath }) => regularPath === this.path) !== "undefined"
       );
     },
   },
