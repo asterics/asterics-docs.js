@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="target" :target="valid ? '_blank' : ''" :ref="valid ? 'noopener' : ''">
+  <router-link :to="target" :target="valid ? '_blank' : ''" :rel="valid ? 'noopener' : ''">
     <font-awesome-icon id="docs-guide" class="icon outbound" icon="info-circle"></font-awesome-icon>
   </router-link>
 </template>
@@ -9,7 +9,7 @@ export default {
   name: "DocsGuide",
   data() {
     return {
-      path: "/guide/docs.html",
+      path: "/guide/docs-guide.html",
     };
   },
   computed: {

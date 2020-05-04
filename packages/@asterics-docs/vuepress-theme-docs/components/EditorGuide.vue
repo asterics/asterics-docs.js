@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="target" :target="valid ? '_blank' : ''" :ref="valid ? 'noopener' : ''">
+  <router-link :to="target" :target="valid ? '_blank' : ''" :rel="valid ? 'noopener' : ''">
     <font-awesome-icon
       id="editor-guide"
       class="icon outbound"
@@ -13,7 +13,7 @@ export default {
   name: "EditorGuide",
   data() {
     return {
-      path: "/guide/markdown.html",
+      path: "/guide/editor-guide.html",
     };
   },
   computed: {
@@ -24,6 +24,9 @@ export default {
       return (
         typeof this.$site.pages.find((regularPath) => regularPath === this.path) !== "undefined"
       );
+    },
+    page() {
+      return this.$site.pages.find((regularPath) => regularPath === this.path);
     },
   },
 };

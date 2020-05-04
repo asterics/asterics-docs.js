@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     source() {
-      return this.src;
+      return this.src.startsWith("/") ? this.$withBase(this.src) : this.src;
     },
   },
 };

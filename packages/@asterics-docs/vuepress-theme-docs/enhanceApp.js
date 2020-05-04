@@ -9,6 +9,8 @@ import ToastsView from "@theme/components/toasts/ToastsView.vue";
 import SSRSettingsView from "@theme/components/settings/SSRSettingsView.vue";
 import BackToTop from "@theme/components/BackToTop.vue";
 import SSRBackToTop from "@theme/components/SSRBackToTop.vue";
+import SSRLayout from "@theme/layouts/SSRLayout.vue";
+import SSRHome from "@theme/layouts/SSRHome.vue";
 
 // async function is also supported, too
 export default async ({
@@ -26,6 +28,8 @@ export default async ({
   } else {
     Vue.component("BackToTop", SSRBackToTop);
     Vue.component("SettingsView", SSRSettingsView);
+    Vue.component("Layout", SSRLayout);
+    Vue.component("Home", SSRHome);
   }
 
   Vue.component("ToastsView", ToastsView);

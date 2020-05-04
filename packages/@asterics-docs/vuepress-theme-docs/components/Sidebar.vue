@@ -26,6 +26,8 @@ export default {
 .sidebar
   &.ps
     height 100%
+  .ssr-rendered &.ps
+    height unset
   ul
     padding 0
     margin 0

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="theme-container"
+    class="theme-container ssr"
     :class="pageClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
@@ -186,6 +186,8 @@ $paddingHeight = 6vh
   // screenHeight - $paddingHeight - $navbarHeight
   height calc(100vh - 6vh - 3.6rem)
   padding-bottom $paddingHeight !important
+  .ssr-rendered &
+    height unset
 
 // .page
 //   display block

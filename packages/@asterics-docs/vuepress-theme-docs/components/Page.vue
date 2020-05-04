@@ -38,11 +38,10 @@ export default {
 <style lang="stylus" scoped>
 $paddingHeight = 3vh
 
-.ps
+.page.ps
   margin-top $navbarHeight
   // screenHeight - $paddingHeight - $navbarHeight
   height calc(100vh - 3vh - 3.6rem)
-.page
   padding-bottom $paddingHeight !important
   display block
 </style>

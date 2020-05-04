@@ -1,5 +1,5 @@
 <template>
-  <img :class="{ default: isDefault }" :src="pluginImage" :alt="page.title || ''" />
+  <img class="no-zoom" :class="{ default: isDefault }" :src="pluginImage" :alt="page.title || ''" />
 </template>
 
 <script>
@@ -29,7 +29,8 @@ export default {
             image.replace("./", "");
         }
         if (image.startsWith("/")) {
-          src = this.$site.base.replace(/\/$/, "") + image;
+          // src = this.$site.base.replace(/\/$/, "") + image;
+          src = this.$withBase(image);
         }
       }
       return src;
