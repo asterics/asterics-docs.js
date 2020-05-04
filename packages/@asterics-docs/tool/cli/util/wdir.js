@@ -2,6 +2,7 @@ const { join, basename, dirname, relative, sep } = require("path");
 const { copyFileSync, existsSync, unlinkSync, renameSync } = require("fs");
 
 const { Branch, Checkout, Reference, Repository, Signature, Status } = require("nodegit");
+const { yellow } = require("chalk");
 
 const { ensureParentDir } = require("./fs.js");
 const { success, error, info } = require("./logger.js");
@@ -29,7 +30,7 @@ async function setupWorkingRepository(config) {
   }
 }
 function getDocsPath(config) {
-  return join(process.cwd(), config.destination);
+  return join(process.cwd(), config.source);
 }
 async function getAuthor() {
   const r = await Repository.open(process.cwd());
@@ -46,7 +47,16 @@ async function getCommitter() {
   return Signature.now(name, email);
 }
 async function getWorkingRepository(config) {
-  return await Repository.open(getDocsPath(config));
+  const path = getDocsPath(config);
+  let repository;
+  if (existsSync(path)) {
+    repository = await Repository.open(path);
+  } else {
+    process.stdout.write(
+      info(`working repository not available. use '${yellow("yarn docs setup")}'.`)
+    );
+  }
+  return repository;
 }
 async function hasChanges(repository) {
   const staged = await getStaged(repository);
@@ -58,8 +68,8 @@ async function hasChanges(repository) {
 async function hasMoreSubmodulesStaged(repository, index) {
   const staged = await getStaged(repository);
   const repositories = staged
-    .filter(e => !e.isNew())
-    .map(e => {
+    .filter((e) => !e.isNew())
+    .map((e) => {
       return e.isRenamed() ? index.get(getOldFilePath(e)) : index.get(e.path());
     })
     .map(([first]) => first)
@@ -71,7 +81,7 @@ async function hasMoreSubmodulesStaged(repository, index) {
 }
 async function hasUntracked(repository) {
   const staged = await getStaged(repository);
-  return staged.find(e => e.isNew()) ? true : false;
+  return staged.find((e) => e.isNew()) ? true : false;
 }
 async function logStaged(repository, index) {
   const staged = await getStaged(repository);
@@ -84,7 +94,7 @@ async function logStaged(repository, index) {
         process.stdout.write(
           info("\n" + " ".repeat(ident.repository) + submodule, {
             end: "\n",
-            label: ""
+            label: "",
           })
         );
         for (const file of staged) {
@@ -96,7 +106,7 @@ async function logStaged(repository, index) {
     }
 
     /* Log unindexed files */
-    const unindexed = staged.filter(e => e.isNew());
+    const unindexed = staged.filter((e) => e.isNew());
     if (unindexed.length) {
       process.stdout.write(
         info("\n" + " ".repeat(ident.repository) + "-", { end: "\n", label: "" })
@@ -114,9 +124,9 @@ async function getStaged(repository) {
     flags:
       Status.OPT.INCLUDE_UNTRACKED |
       Status.OPT.RECURSE_UNTRACKED_DIRS |
-      Status.OPT.RENAMES_HEAD_TO_INDEX |
-      Status.OPT.RENAMES_FROM_REWRITES,
-    show: Status.SHOW.INDEX_ONLY
+      Status.OPT.RENAMES_HEAD_TO_INDEX,
+    // Status.OPT.RENAMES_FROM_REWRITES,
+    show: Status.SHOW.INDEX_ONLY,
   };
   return await repository.getStatusExt(opts);
 }
@@ -145,7 +155,7 @@ async function getUnstaged(repository) {
       Status.OPT.RENAMES_HEAD_TO_INDEX |
       Status.OPT.RENAMES_INDEX_TO_WORKDIR |
       Status.OPT.RENAMES_FROM_REWRITES,
-    show: Status.SHOW.WORKDIR_ONLY
+    show: Status.SHOW.WORKDIR_ONLY,
   };
   return await repository.getStatusExt(opts);
 }
@@ -162,22 +172,22 @@ async function logUntracked(repository) {
 async function getUntracked(repository) {
   const opts = {
     flags: Status.OPT.INCLUDE_UNTRACKED | Status.OPT.RECURSE_UNTRACKED_DIRS,
-    show: Status.SHOW.WORKDIR_ONLY
+    show: Status.SHOW.WORKDIR_ONLY,
   };
   const status = await repository.getStatusExt(opts);
-  return status.filter(entry => entry.isNew());
+  return status.filter((entry) => entry.isNew());
 }
 
 async function commit(repository, index, config, args) {
   const staged = await getStaged(repository);
-  const jobs = staged.map(e => {
-    const path = e.isRenamed() ? getOldFilePath(e) : e.path();
+  const jobs = staged.map((e) => {
+    const path = e.isRenamed() && e.isNew() ? getOldFilePath(e) : e.path();
     const resolution = index.get(path)[0];
     return {
       branch: resolution.dependency.getBranch(resolution.version),
       repository: resolution.repository,
       target: resolution.source,
-      source: e
+      source: e,
     };
   });
 
@@ -192,14 +202,14 @@ async function commit(repository, index, config, args) {
 
   /* Save current branch of submodule */
   const submoduleConfig = getSubmodules(config)
-    .filter(submodule => submodule.config)
+    .filter((submodule) => submodule.config)
     .find(({ name }) => name === args.submodule);
   const submodule = await Repository.open(join(process.cwd(), submoduleConfig.path));
   const currentBranch = (await submodule.getCurrentBranch()).shorthand();
 
   /* Commit staged changes to branches */
   for (const branch of branches) {
-    const currentJobs = jobs.filter(entry => entry.branch === branch);
+    const currentJobs = jobs.filter((entry) => entry.branch === branch);
 
     /* Checkout branch in submodule */
     await checkoutBranch(submodule, branch);
@@ -211,7 +221,7 @@ async function commit(repository, index, config, args) {
         if (existsSync(target)) unlinkSync(target);
       } else {
         /* Rename file in submodule */
-        if (job.source.isRenamed()) {
+        if (job.source.isRenamed() && job.source.isNew()) {
           renameTarget(job, submoduleConfig);
         }
         /* Copy new file content */
@@ -241,7 +251,7 @@ async function commit(repository, index, config, args) {
 
 function getSource(job, config) {
   const cwd = process.cwd();
-  return join(cwd, config.destination, job.source.path());
+  return join(cwd, config.source, job.source.path());
 }
 
 function getTarget(job, submoduleConfig) {
@@ -250,10 +260,7 @@ function getTarget(job, submoduleConfig) {
 }
 
 function renameTarget(job, submoduleConfig) {
-  const oldSource = job.source
-    .headToIndex()
-    .oldFile()
-    .path();
+  const oldSource = job.source.headToIndex().oldFile().path();
   const newSource = job.source.path();
   const move = relative(dirname(oldSource), dirname(newSource));
   const cwd = process.cwd();
@@ -274,7 +281,7 @@ async function checkoutBranch(repository, branch) {
       Checkout.STRATEGY.SAFE ||
       Checkout.STRATEGY.RECREATE_MISSING ||
       Checkout.STRATEGY.ALLOW_CONFLICTS ||
-      Checkout.STRATEGY.USE_THEIRS
+      Checkout.STRATEGY.USE_THEIRS,
   };
   const remoteBranch = await repository.getBranch(`origin/${branch}`);
   const remoteCommit = await repository.getCommit(remoteBranch.target());
@@ -318,6 +325,9 @@ module.exports = {
   logStaged,
   logUnstaged,
   logUntracked,
+  getStaged,
+  getUnstaged,
+  getUntracked,
   commitWorkingRepository,
-  commit
+  commit,
 };

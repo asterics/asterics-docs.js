@@ -1,11 +1,15 @@
-# `@asterics-docs/tool`
+# `@asterics-docs/tool` Guide
 
-> TODO: description
+This package provides (low level) commands to setup and generate asterics-docs (https://www.asterics.eu).
 
-## Usage
+## Commands
 
-```
-const tool = require('@asterics-docs/tool');
+### `@asterics-docs/tool` init
 
-// TODO: DEMONSTRATE API
-```
+### `@asterics-docs/tool` deinit
+
+### `@asterics-docs/tool` setup
+
+### `@asterics-docs/tool` commit
+
+### `@asterics-docs/tool` push

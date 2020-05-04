@@ -1,10 +1,10 @@
 const ident = {
   repository: 4,
-  file: 8
+  file: 8,
 };
 
 function hasCandidate(status, index, submodule, changes = "headToIndex") {
-  return status.find(file => isInSubmodule(file, index, submodule, changes));
+  return status.find((file) => isInSubmodule(file, index, submodule, changes));
 }
 
 function isInSubmodule(file, index, submodule, changes = "headToIndex") {
@@ -14,9 +14,7 @@ function isInSubmodule(file, index, submodule, changes = "headToIndex") {
 }
 
 function getOldFilePath(file, changes = "headToIndex") {
-  return file[changes]()
-    .oldFile()
-    .path();
+  return file[changes]().oldFile().path();
 }
 
 function log(logger, file, changes = "headToIndex") {
@@ -31,7 +29,7 @@ function log(logger, file, changes = "headToIndex") {
     process.stdout.write(
       logger("", {
         end: "\n",
-        label: prefix + `renamed:    ${oldFile.path()} -> ${newFile.path()}`
+        label: prefix + `renamed:    ${oldFile.path()} -> ${newFile.path()}`,
       })
     );
   } else if (file.isIgnored()) {

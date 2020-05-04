@@ -27,6 +27,11 @@ class Submodule {
   clean(position = 0) {
     return deleteSubmodules(this, position);
   }
+  pullWithRebase(branch) {
+    return checkoutSubmodule(this, 0, branch).then(() => {
+      return pullWithRebase(this, branch);
+    });
+  }
 }
 
 function getSubmodules(config) {
@@ -42,8 +47,8 @@ function getSubmodules(config) {
   if (gitConfig.match(entries))
     submodules = gitConfig
       .match(entries)
-      .map(e => e.match(data))
-      .map(e => ({ name: e[4], path: e[2], url: e[3] }))
+      .map((e) => e.match(data))
+      .map((e) => ({ name: e[4], path: e[2], url: e[3] }))
       .map(({ name, path, url }) => {
         return new Submodule(
           name,
@@ -68,8 +73,8 @@ function getSubmoduleNames() {
   if (gitConfig.match(entries))
     submodules = gitConfig
       .match(entries)
-      .map(e => e.match(data))
-      .map(e => ({ name: e[4], path: e[2], url: e[3] }))
+      .map((e) => e.match(data))
+      .map((e) => ({ name: e[4], path: e[2], url: e[3] }))
       .map(({ name }) => name);
 
   return submodules;
@@ -106,15 +111,16 @@ function updateSubmodule(submodule, position, useReference = true) {
       writeLine(line, position);
       _resolve({ stdout, stderr });
     });
-    subprocess.stderr.on("data", chunk => processProgress(submodule, position, chunk));
+    subprocess.stderr.on("data", (chunk) => processProgress(submodule, position, chunk));
   });
 }
 
-function checkoutSubmodule(submodule, position) {
+function checkoutSubmodule(submodule, position = 0, branch = "master") {
   return new Promise(function(_resolve, reject) {
     const cwd = process.cwd();
     const path = join(cwd, submodule.path);
-    const cmd = `git ${gitwd(path)} checkout master`;
+    console.log("DEBUG", branch);
+    const cmd = `git ${gitwd(path)} checkout ${branch}`;
     const label = `Updating submodule ${green(submodule.name)}`;
     const line = `${label} finished. Checking out master`;
     writeLine(`${line} ...`, position);
@@ -136,6 +142,23 @@ function pull(submodule, position) {
     exec(cmd, (error, stdout, stderr) => {
       if (error) reject(error);
       writeLine(`${line} completed.`, position);
+      _resolve({ stdout, stderr });
+    });
+  });
+}
+
+function pullWithRebase(submodule, branch) {
+  return new Promise(function(_resolve, reject) {
+    const cwd = process.cwd();
+    const path = join(cwd, submodule.path);
+    const cmd = `git ${gitwd(path)} pull --rebase origin ${branch}`;
+    const line = `Pulling and rebasing recent changes of ${green(
+      submodule.name
+    )} on branch ${branch}`;
+    writeLine(`${line} ...`);
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) reject(error);
+      writeLine(`${line} completed.`);
       _resolve({ stdout, stderr });
     });
   });
@@ -178,7 +201,7 @@ function deleteSubmodules(submodule, position) {
   return new Promise((_resolve, reject) => {
     const cwd = process.cwd();
     const localPath = resolve(cwd, submodule.path);
-    const gitPath = resolve(cwd, ".git/modules", submodule.path);
+    const gitPath = resolve(cwd, ".git/modules", submodule.name);
     const localP = blue(relative(cwd, localPath));
     const gitP = blue(relative(cwd, gitPath));
     const line = `Deleting submodule ${green(submodule.name)} at ${localP}, ${gitP}`;

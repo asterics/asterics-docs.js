@@ -1,4 +1,4 @@
-const { existsSync } = require("fs");
+const { existsSync, writeFileSync } = require("fs");
 const { join, relative } = require("path");
 const { clearScreenDown } = require("readline");
 
@@ -14,20 +14,20 @@ const { error, info } = require("./util/logger.js");
 exports.command = "setup";
 exports.aliases = [];
 exports.describe = "Setup asterics-docs directory";
-exports.builder = yargs => {
+exports.builder = (yargs) => {
   yargs
     .usage("asterics-docs setup")
     .default("version", undefined)
     .options({
       h: { alias: "help", describe: "Show this help." },
-      v: { alias: "verbose", describe: "Print all entries." }
+      v: { alias: "verbose", describe: "Print all entries." },
     });
 };
-exports.handler = async args => {
+exports.handler = async (args) => {
   const config = loadConfig(args.config);
-  if (destExists(config)) {
+  if (docsExists(config)) {
     process.stdout.write(
-      error(`cannot setup asterics-docs. folder '${config.destination}' exists already.`)
+      error(`cannot setup asterics-docs. folder '${config.source}' exists already.`)
     );
   } else {
     process.stdout.write(cursorSavePosition);
@@ -37,14 +37,15 @@ exports.handler = async args => {
   }
 };
 
-function destExists({ destination }) {
-  const path = join(process.cwd(), destination);
-  return destination ? existsSync(path) : false;
+function docsExists({ source }) {
+  const path = join(process.cwd(), source);
+  return source ? existsSync(path) : false;
 }
 
 async function setupIndex(config, args) {
-  const submodules = getSubmodules(config).filter(submodule => submodule.config);
+  const submodules = getSubmodules(config).filter((submodule) => submodule.config);
   const index = await loadIndex(config.versions, submodules, args);
+  writeIndex(config, submodules, index);
   for (const file of index.all) {
     const dependencies = index.get(file);
     /* Skip entries without configured dependencies */
@@ -55,8 +56,26 @@ async function setupIndex(config, args) {
   }
 }
 
+function writeIndex(config, submodules, index) {
+  const target = join(process.cwd(), config.source, ".vuepress/index.json");
+  const content = {};
+  for (const path of index.all) {
+    if (typeof content[path] === "undefined")
+      content[path] = { editLink: generateEditLink(index, submodules, path) };
+  }
+  ensureParentDir(target);
+  writeFileSync(target, JSON.stringify(content, null, 2));
+}
+
+function generateEditLink(index, submodules, path) {
+  const { repository, source, version, dependency } = index.resolve(path);
+  const { url } = submodules.find(({ name }) => name === repository);
+  const branch = dependency.getBranch(version);
+  return `${url.replace(/\.git$/, "/edit")}/${branch}/${source}`;
+}
+
 async function load(path, dependency, config, args) {
-  const target = join(process.cwd(), config.destination, path);
+  const target = join(process.cwd(), config.source, path);
   ensureParentDir(target);
   await copyFile(target, dependency, config, args);
 }
@@ -67,7 +86,7 @@ async function copyFile(path, dependency, config, args) {
     const submodule = getSubmodule(repository, config);
     await dependency.dependency.copy(source, path, submodule, version);
     clearScreenDown(process.stdout);
-    const p = relative(join(process.cwd(), config.destination), path);
+    const p = relative(join(process.cwd(), config.source), path);
     process.stdout.write(
       info(p, { end: args.verbose ? "\n" : cursorRestorePosition, label: "loading" })
     );
@@ -78,6 +97,6 @@ async function copyFile(path, dependency, config, args) {
 
 function getSubmodule(name, config) {
   return getSubmodules(config)
-    .filter(submodule => submodule.config)
-    .find(submodule => submodule.name === name);
+    .filter((submodule) => submodule.config)
+    .find((submodule) => submodule.name === name);
 }

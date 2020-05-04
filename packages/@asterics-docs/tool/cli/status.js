@@ -21,6 +21,8 @@ exports.handler = async args => {
   const config = loadConfig(args.config);
   const docs = await getWorkingRepository(config);
 
+  if (!docs) return;
+
   if (await hasChanges(docs)) {
     const index = await getIndex(config, args);
     await logStaged(docs, index);

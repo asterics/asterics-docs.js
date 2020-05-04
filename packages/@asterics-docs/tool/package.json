@@ -1,6 +1,6 @@
 {
   "name": "@asterics-docs/tool",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.23+3b3a266",
   "description": "Documentation management tool for AsTeRICS",
   "license": "GPL-3.0",
   "author": "Alija Sabic <sabic.alija@gmail.com>",
@@ -27,5 +27,6 @@
     "chalk": "^3.0.0",
     "nodegit": "^0.26.5",
     "yargs": "^15.1.0"
-  }
+  },
+  "gitHead": "3b3a266f9821e20f04c417a93e8fb7135292c502"
 }
