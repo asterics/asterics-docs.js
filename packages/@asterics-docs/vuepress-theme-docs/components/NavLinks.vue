@@ -28,7 +28,7 @@
 <script>
 import DropdownLink from "@theme/components/DropdownLink.vue";
 import { resolveNavLinkItem } from "@parent-theme/util";
-import NavLink from "@theme/components/NavLink.vue";
+import NavLink from "@parent-theme/components/NavLink.vue";
 import VersionLinks from "@theme/components/navbar/VersionLinks.vue";
 import SettingsButton from "@theme/components/settings/SettingsButton.vue";
 import GoogleTranslate from "@theme/components/third-party/GoogleTranslate.vue";
