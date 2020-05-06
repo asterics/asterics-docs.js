@@ -22,13 +22,7 @@
       </template>
     </Sidebar>
 
-    <perfect-scrollbar
-      ref="scrollbar"
-      tag="main"
-      class="page"
-      @ps-scroll-y="onScroll"
-      v-show="!settings.page.settings.display"
-    >
+    <main class="page" v-show="!settings.page.settings.display">
       <JumboTron id="home-jumbotron" :class="{ mounted: isMounted, lock: lockJumbotron }">
         <Content slot-key="jumbotron" />
       </JumboTron>
@@ -39,7 +33,7 @@
       <PageEdit />
 
       <PageNav v-bind="{ sidebarItems }" />
-    </perfect-scrollbar>
+    </main>
   </div>
 </template>
 
@@ -160,41 +154,15 @@ export default {
         }
       }
     },
-
-    onScroll() {
-      if (!this.lockJumbotron && this.$refs.scrollbar.ps.scrollbarYTop > 20) {
-        this.lockJumbotron = true;
-      }
-      eventBus.$emit("scroll-y", this.$refs.scrollbar);
-    },
   },
 };
 </script>
 
 <style lang="stylus" scoped>
-// .page
-//   .theme-default-content:nth-child(2)
-//     padding-bottom 1px
-//     // padding-top -40px
-//   .theme-default-content:nth-child(3)
-//     padding-top 1px
-
-$paddingHeight = 6vh
-
-.ps
-  margin-top $navbarHeight
-  // screenHeight - $paddingHeight - $navbarHeight
-  height calc(100vh - 6vh - 3.6rem)
-  padding-bottom $paddingHeight !important
-
-// .page
-//   display block
 
 #home-jumbotron
-  // margin-top $navbarHeight
   background radial-gradient(white 0%,darken($borderColor,5%) 80%)
   .dark-mode &
-    // background radial-gradient(black 0%, $darkModeBg 80%, darken($darkModeTextColor,5%) 150%)
     background unset
     background-color darken($darkModeTextColor,70%)
     box-shadow 1px 1px 0px 2px darken($darkModeTextColor,40%)

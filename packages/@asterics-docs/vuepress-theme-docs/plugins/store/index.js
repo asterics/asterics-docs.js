@@ -45,6 +45,7 @@ export const store = new Vuex.Store({
     },
     search: {
       plugins: "",
+      filter: "",
     },
   },
   mutations: {
@@ -92,6 +93,9 @@ export const store = new Vuex.Store({
 
     updatePluginSearch(state, input) {
       state.search.plugins = input;
+    },
+    updatePluginFilter(state, selection) {
+      state.search.filter = selection;
     },
   },
 });

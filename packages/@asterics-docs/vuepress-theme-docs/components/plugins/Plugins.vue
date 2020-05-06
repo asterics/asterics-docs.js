@@ -1,28 +1,22 @@
 <template>
-  <div>
-    <PluginsHeader />
-    <PluginsSearch :items="items" />
-    <PluginsActuator :items="items" />
-    <PluginsSensor />
-    <PluginsProcessor />
+  <div class="plugins-grid">
+    <Type v-for="[label, dirname] of types" :label="label" :dirname="dirname" :key="label" />
   </div>
 </template>
 
 <script>
-import PluginsHeader from "@theme/components/plugins/PluginsHeader.vue";
-import PluginsSearch from "@theme/components/plugins/PluginsSearch.vue";
-import PluginsActuator from "@theme/components/plugins/PluginsActuator.vue";
-import PluginsSensor from "@theme/components/plugins/PluginsSensor.vue";
-import PluginsProcessor from "@theme/components/plugins/PluginsProcessor.vue";
-
+import Type from "@theme/components/plugins/Type.vue";
 export default {
   name: "Plugins",
-  components: { PluginsHeader, PluginsSearch, PluginsActuator, PluginsSensor, PluginsProcessor },
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
+  components: { Type },
+  data() {
+    return {
+      types: [
+        ["Actuators", "actuators/"],
+        ["Processors", "processors/"],
+        ["Sensors", "sensors/"],
+      ],
+    };
   },
 };
 </script>

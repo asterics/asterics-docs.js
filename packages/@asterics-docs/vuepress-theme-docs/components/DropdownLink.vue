@@ -11,7 +11,7 @@
     </button>
 
     <DropdownTransition>
-      <perfect-scrollbar tag="ul" class="nav-dropdown" v-show="open">
+      <ul class="nav-dropdown" v-show="open">
         <li
           v-for="(subItem, index) in item.items"
           :key="subItem.link || index"
@@ -44,7 +44,7 @@
             @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
           />
         </li>
-      </perfect-scrollbar>
+      </ul>
     </DropdownTransition>
   </div>
 </template>

@@ -9,16 +9,17 @@
       spellcheck="false"
       :value="search.plugins"
       @input="updateSearch"
-      :placeholder="`Search ${plugins.sensor} sensors, ${plugins.processor} processors plugins &amp; ${plugins.actuator} actuators`"
+      :placeholder="
+        `Search ${plugins.sensor} sensors, ${plugins.processor} processors plugins &amp; ${plugins.actuator} actuators`
+      "
     />
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-
 export default {
-  name: "PluginsSearch",
+  name: "Search",
   computed: {
     ...mapState(["search"]),
     plugins() {

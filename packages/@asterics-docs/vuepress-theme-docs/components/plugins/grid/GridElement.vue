@@ -1,6 +1,6 @@
 <template>
   <li class="search-grid-link">
-    <router-link tabindex="0" :to="page.regularPath">
+    <router-link tabindex="0" :to="page.regularPath" style="display: block;">
       <div class="search-grid-element">
         <div class="search-grid-image-container">
           <GridImage v-if="image" :page="page" />

@@ -7,7 +7,7 @@
 
 <script>
 import NavLink from "@parent-theme/components/NavLink.vue";
-import DropdownLink from "@parent-theme/components/DropdownLink.vue";
+import DropdownLink from "@theme/components/DropdownLink.vue";
 export default {
   name: "VersionLinks",
   components: { NavLink, DropdownLink },

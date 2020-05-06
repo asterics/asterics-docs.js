@@ -1,12 +1,12 @@
 <template>
-  <perfect-scrollbar tag="aside" class="sidebar">
+  <aside tag="aside" class="sidebar">
     <NavLinks @toggle-sidebar="$emit('toggle-sidebar')" />
 
     <slot name="top" />
 
     <SidebarLinks :depth="0" :items="items" />
     <slot name="bottom" />
-  </perfect-scrollbar>
+  </aside>
 </template>
 
 <script>
@@ -24,10 +24,6 @@ export default {
 
 <style lang="stylus">
 .sidebar
-  &.ps
-    height 100%
-  .ssr-rendered &.ps
-    height unset
   ul
     padding 0
     margin 0

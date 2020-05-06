@@ -18,9 +18,9 @@
       </template>
     </Sidebar>
 
-    <perfect-scrollbar tag="main" class="page">
+    <main class="page">
       <slot name="content"></slot>
-    </perfect-scrollbar>
+    </main>
   </div>
 </template>
 

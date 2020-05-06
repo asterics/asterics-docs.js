@@ -1,5 +1,5 @@
 <template>
-  <perfect-scrollbar tag="div" class="settings-page">
+  <div class="settings-page">
     <div class="toolbar">
       <div class="title">
         <slot name="title">Settings</slot>
@@ -9,7 +9,7 @@
     <div key="setting-scroll" class="settings">
       <slot></slot>
     </div>
-  </perfect-scrollbar>
+  </div>
 </template>
 
 <script>

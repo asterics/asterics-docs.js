@@ -12,8 +12,7 @@ module.exports = (themeConfig, ctx) => {
     [
       "@vuepress/medium-zoom",
       {
-        selector:
-          ".theme-default-content :not(a) :not(.search-grid-image-container) :not(.no-zoom) > img",
+        selector: ".theme-default-content :not(a) > img :not(.no-zoom)",
       },
     ],
     [
@@ -31,35 +30,13 @@ module.exports = (themeConfig, ctx) => {
       "@vuepress/search",
       {
         searchMaxSuggestions: 10,
-        // test: "^(?![\\d,\\.]*\\/)",
         test: [
           "/",
           ...themeConfig.versions
             .slice(1, themeConfig.versions.length)
             .map((version) => `/${version}/`),
         ],
-        // test: [
-        //   "//",
-        //   "/develop/",
-        //   "/get-involved/",
-        //   "/get-started/",
-        //   "/manuals/",
-        //   "/plugins/",
-        //   "/solutions/",
-        // ],
       },
-      // [
-      //   "vuepress-plugin-dehydrate",
-      //   {
-      //     // disable SSR
-      //     noSSR: "404.html",
-      //     // remove scripts
-      //     noScript: [
-      //       // support glob patterns
-      //       "404.html",
-      //     ],
-      //   },
-      // ],
     ],
   ];
   const globalUIComponents = ["SettingsView", "BackToTop", "ToastsView"];
@@ -71,11 +48,7 @@ module.exports = (themeConfig, ctx) => {
       await loadPageExtraData($page, themeConfig);
     },
     globalUIComponents,
-    enhanceAppFiles: [
-      resolve(__dirname, "enhanceApp.js"),
-      resolve(__dirname, "plugins/smooth-scroll/index.js"),
-    ],
-    clientRootMixin: resolve(__dirname, "plugins/smooth-scroll/clientRootMixin.js"),
+    enhanceAppFiles: [resolve(__dirname, "enhanceApp.js")],
     plugins,
   };
   return config;
@@ -95,7 +68,7 @@ function configureMarkdown(md) {
   md.use(require("markdown-it-kbd"));
   md.use(require("markdown-it-attrs"));
   md.use(require("markdown-it-fontawesome"));
-  md.renderer.rules.emoji = function (token, idx) {
+  md.renderer.rules.emoji = function(token, idx) {
     return twemoji.parse(token[idx].content, {
       base: "https://twemoji.maxcdn.com/2/",
       ext: ".svg",

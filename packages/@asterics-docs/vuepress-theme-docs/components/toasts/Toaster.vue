@@ -1,5 +1,5 @@
 <template>
-  <perfect-scrollbar tag="div">
+  <div>
     <transition-group name="list" tag="ul" id="toaster">
       <Toast
         v-for="(item, index) of items"
@@ -10,7 +10,7 @@
         class="list-item"
       ></Toast>
     </transition-group>
-  </perfect-scrollbar>
+  </div>
 </template>
 
 <script>
