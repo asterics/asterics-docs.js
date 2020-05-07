@@ -24,9 +24,9 @@ To build the website, execute following steps:
 ~/asterics-docs $ yarn
 ```
 
-`asterics-docs` contains three branches with predefined roles:
-
 ::: tip Note
+
+[`asterics-docs`](https://github.com/asterics/asterics-docs) contains three branches with predefined roles:
 
 - `master`: branch used to build release at [https://www.asterics.eu](https://www.asterics.eu).
 - `next`: branch used to build releast at [https://www.asterics.eu/next/](https://www.asterics.eu/next/).
@@ -37,7 +37,7 @@ To build the website, execute following steps:
 After executing these steps, the main repository is cloned and all required packages are installed.
 
 ::: tip
-Consider cloning `asterics-docs` inside a folder, that contains other AsTeRICS repostories for faster cloning of submodules (cf. parameter [reference](#configuration)).
+Consider cloning [`asterics-docs`](https://github.com/asterics/asterics-docs) inside a folder, that contains other AsTeRICS repostories for faster cloning of submodules (cf. parameter [reference](#configuration)).
 :::
 
 For the next steps, we have to use commands provided by [`@asterics-docs/tool`](#asterics-docs-tool), which includes cloning all repositories containing documentation for [https://www.asterics.eu](https://www.asterics.eu).
