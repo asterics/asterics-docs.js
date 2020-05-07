@@ -342,6 +342,8 @@ interface normalSourcesConfig {
 interface filesConfig {
   source: string; // source location (folder/file)
   destination: string; // target destination (asterics-docs)
+  filter: regexp; // regular expression for paths to include
+  exclude: regexp; // regular expression for paths to exclude
   branch: string; // branch containing the required files, or
   versions: [string, string]; // version map, specifying branches for each version ([version, branch])
 }
