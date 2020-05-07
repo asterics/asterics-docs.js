@@ -282,7 +282,8 @@ Specifying both submodule and branch, results in a pull (with rebase) followed b
 #### base
 
 - Type: `string`
-- Default: `/`
+- Default: `null`
+- Example: `/`
 
 The base URL the site will be deployed at.
 You will need to change this if you plan to deploy your site under a sub path.
@@ -291,14 +292,16 @@ If you plan to deploy your site to `https://www.asterics.eu/next/`, then you sho
 #### port
 
 - Type: `number`
-- Default: `8080`
+- Default: `null`
+- Example: `8080`
 
 Specify the port to use fot the dev server.
 
 #### source
 
 - Type: `string`
-- Default: `docs`
+- Default: `null`
+- Example: `docs`
 
 Specify the output directory of `@asterics-docs/tool` or input directory for `vuepress`.
 Relative paths are resolved based on the result of `process.cwd()`.
@@ -306,7 +309,8 @@ Relative paths are resolved based on the result of `process.cwd()`.
 #### dest
 
 - Type: `string`
-- Default: `dist`
+- Default: `null`
+- Example: `dist`
 
 Specify the output directory for `vuepress build`.
 Relative paths are resolved based on the result of `process.cwd()`.
@@ -314,14 +318,16 @@ Relative paths are resolved based on the result of `process.cwd()`.
 #### host
 
 - Type: `string`
-- Default: `https://www.asterics.eu`
+- Default: `null`
+- Example: `https://www.asterics.eu`
 
 Specify the host were page it deployed to.
 
 #### versions
 
 - Type: `array`
-- Default: `["4.0", "3.0.1", "3.0", "2.8", "2.7", "2.6", "2.5", "2.3"]`
+- Default: `null`
+- Example: `["4.0", "3.0.1", "3.0", "2.8", "2.7", "2.6", "2.5", "2.3"]`
 
 Specify the version you want to build.
 First entry is always the current version and is not sub-pathed as others.
