@@ -24,6 +24,16 @@ To build the website, execute following steps:
 ~/asterics-docs $ yarn
 ```
 
+`asterics-docs` contains three branches with predefined roles:
+
+::: tip Note
+
+- `master`: branch used to build release at [https://www.asterics.eu](https://www.asterics.eu).
+- `next`: branch used to build releast at [https://www.asterics.eu/next/](https://www.asterics.eu/next/).
+- `gh-pages`: branch containing both releases.
+
+:::
+
 After executing these steps, the main repository is cloned and all required packages are installed.
 
 ::: tip
@@ -54,13 +64,22 @@ To install `@asterics-docs/tool` inside a project, run following command.
 For **npm** run:
 
 ```bash
-$ npm install @asterics-docs/tool
+$ npm install @asterics-docs/tool    # local installation
+$ npm install -g @asterics-docs/tool # global installation
 ```
 
 For **yarn** run:
 
 ```bash
-$ yarn add @asterics-docs/tool
+$ yarn add @asterics-docs/tool       # local installation
+$ yarn add global @asterics-docs/tool # global installation
+```
+
+Aftwards you can run `@asterics-docs/tool`:
+
+```bash
+$ npx asterics-docs --help           # local installation
+$ asterics-docs --help               # global installation
 ```
 
 ### Commands
