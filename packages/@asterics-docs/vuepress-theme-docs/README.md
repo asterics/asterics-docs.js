@@ -89,6 +89,22 @@ To experiment with the supported syntax visit [markdown-it demo](https://markdow
   Google :fab-google:  
   GitHub :fab-github:
   :::
+  
+## Model Links
+
+When describing a text related to a certain model file, it is good practice to directly link to that file in the AsTeRICS github repository. This can be done using the online webacs application and the ```openFile``` query parameter.
+
+```
+[Single Switch Model](http://webacs.asterics.eu/?areBaseURI=https://127.0.0.1:8083&openFile=https://raw.githubusercontent.com/asterics/AsTeRICS/master/bin/ARE/models/useCaseDemos/mouseControl/crosshairCursorControl_1key.acs)
+```
+[Single Switch Model](http://webacs.asterics.eu/?areBaseURI=https://127.0.0.1:8083&openFile=https://raw.githubusercontent.com/asterics/AsTeRICS/master/bin/ARE/models/useCaseDemos/mouseControl/crosshairCursorControl_1key.acs)
+
+The value of ```openFile``` must be replaced by the **raw link** of the model file on github. 
+To get the link, navigate to the model file in the github repository browser
+
+1. Open the file by clicking on it
+2. Click on the ```Raw``` button.
+3. Copy the URL in the browser address bar. It should start with: ```https://raw.githubusercontent.com/asterics/AsTeRICS/....```
 
 ## Frontmatter
 
