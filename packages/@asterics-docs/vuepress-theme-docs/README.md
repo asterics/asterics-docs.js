@@ -90,6 +90,52 @@ To experiment with the supported syntax visit [markdown-it demo](https://markdow
   GitHub :fab-github:
   :::
   
+### VuePress Markdown Extensions
+
+The vuepress theme provides the markdown extensions described above, see [markdown extensions](https://vuepress.vuejs.org/guide/markdown.html).
+
+For example you can create ```custom containers``` rendered as green info, yellow warning or red warning. You can also define custom titles for the boxes.
+
+#### Input
+
+```
+::: tip
+This is a tip
+:::
+
+::: warning
+This is a warning
+:::
+
+::: danger
+This is a dangerous warning
+:::
+
+::: details
+This is a details block, which does not work in IE / Edge
+:::
+```
+
+#### Output
+
+::: tip
+This is a tip
+:::
+
+::: warning
+This is a warning
+:::
+
+::: danger
+This is a dangerous warning
+:::
+
+::: details
+This is a details block, which does not work in IE / Edge
+:::
+
+For more information, see [Custom Containers](https://vuepress.vuejs.org/guide/markdown.html#custom-containers).
+  
 ## Model Links
 
 When describing a text related to a certain model file, it is good practice to directly link to that file in the AsTeRICS github repository. This can be done using the online webacs application and the ```openFile``` query parameter.
