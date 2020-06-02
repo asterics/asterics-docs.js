@@ -1,6 +1,10 @@
 <template>
   <div class="model-controls-wrapper">
-    <div class="control model" :class="{ disabled: !model }">
+    <div
+      title="Edit the AsTeRICS model"
+      class="control model"
+      :class="{ disabled: !model }"
+    >
       <Linker :to="modelURL" :tab="Boolean(model)">
         <div class="icon-background small external">
           <div class="icon small">
@@ -15,7 +19,11 @@
         </div>
       </Linker>
     </div>
-    <div class="control webapp" :class="{ disabled: !webapp }">
+    <div
+      title="Open the web app to customize the solution"
+      class="control webapp"
+      :class="{ disabled: !webapp }"
+    >
       <Linker :to="webappURL" :tab="Boolean(webapp)">
         <div class="icon-background small external">
           <div class="icon small">
@@ -25,14 +33,14 @@
         </div>
       </Linker>
     </div>
-    <div class="control start">
+    <div title="Start the AsTeRICS Model" class="control start">
       <div class="icon-background" @click="onStart" @keydown.enter="onStart" tabindex="0">
         <div class="icon">
           <font-awesome-icon icon="play"></font-awesome-icon>
         </div>
       </div>
     </div>
-    <div class="control settings">
+    <div title="Open the solution settings" class="control settings">
       <div
         class="icon-background small dark"
         @click="openSolutionSettings"
@@ -44,7 +52,11 @@
         </div>
       </div>
     </div>
-    <div class="control docs" :class="{ disabled: !docs }">
+    <div
+      title="Open the plugin documentation"
+      class="control docs"
+      :class="{ disabled: !docs }"
+    >
       <Linker :to="docs" :tab="Boolean(docs)">
         <div class="icon-background small dark">
           <div class="icon small">
@@ -102,7 +114,9 @@ export default {
     // FIXME: Encoded URL parameters are not supported by ARE/WebACS currently.
     //        But should be probably used in future.
     encode(component) {
-      return typeof encodeURIComponent === "undefined" ? component : encodeURIComponent(component);
+      return typeof encodeURIComponent === "undefined"
+        ? component
+        : encodeURIComponent(component);
     },
     onStart() {
       if (this.model) {

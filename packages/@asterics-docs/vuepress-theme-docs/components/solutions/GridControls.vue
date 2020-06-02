@@ -1,6 +1,6 @@
 <template>
   <div class="model-controls-wrapper">
-    <div class="control edit" :class="{ disabled: !grid }">
+    <div title="Edit the AsTeRICS Grid" class="control edit" :class="{ disabled: !grid }">
       <Linker :to="gridEditURL" :tab="Boolean(grid)">
         <div class="icon-background small external">
           <div class="icon small">
@@ -10,7 +10,11 @@
         </div>
       </Linker>
     </div>
-    <div class="control grid" :class="{ disabled: !grid }">
+    <div
+      title="Launch the AsTeRICS Grid"
+      class="control grid"
+      :class="{ disabled: !grid }"
+    >
       <Linker :to="gridURL" :tab="Boolean(grid)">
         <div class="icon-background">
           <div class="icon">
@@ -20,7 +24,7 @@
         </div>
       </Linker>
     </div>
-    <div class="control settings">
+    <div title="Open the solution settings" class="control settings">
       <div
         class="icon-background small dark"
         @click="openSolutionSettings"
@@ -32,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="control docs" :class="{ disabled: !docs }">
+    <div title="Open the documentation" class="control docs" :class="{ disabled: !docs }">
       <Linker :to="docs" :tab="Boolean(docs)">
         <div class="icon-background small dark">
           <div class="icon small">
