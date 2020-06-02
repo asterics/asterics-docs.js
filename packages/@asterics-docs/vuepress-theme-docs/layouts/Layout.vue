@@ -79,11 +79,18 @@ export default {
 
     shouldShowSidebar() {
       const { frontmatter } = this.$page;
-      return !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length;
+      return (
+        !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length
+      );
     },
 
     sidebarItems() {
-      return resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
+      return resolveSidebarItems(
+        this.$page,
+        this.$page.regularPath,
+        this.$site,
+        this.$localePath
+      );
     },
 
     pageClasses() {
@@ -102,6 +109,7 @@ export default {
   mounted() {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false;
+      this.$store.commit("hideSettings");
     });
   },
 
