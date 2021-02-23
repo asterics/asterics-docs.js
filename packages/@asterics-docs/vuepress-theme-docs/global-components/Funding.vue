@@ -17,10 +17,16 @@ export default {
   align-items center
   padding-left 0
   list-style-type none
+  min-height 8rem
+  & > li
+    line-height 8rem
+    height 8rem
+    justify-content center
+    flex-basis 0
+    flex-grow 1
 
 @media (max-width: $MQMobileNarrow)
   #funding
-    // flex-flow column nowrap
     flex-flow row wrap
     justify-content center
     li
@@ -28,5 +34,4 @@ export default {
       max-width 40%
       &:nth-child(2n-1)
         margin-right 3rem
-    // width 40%
 </style>

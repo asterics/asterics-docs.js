@@ -28,10 +28,7 @@ export default {
   },
   computed: {
     isYoutube() {
-      const patterns = [
-        /https:\/\/.*youtube\.com.*v=(.*?)(&.*)?$/,
-        /https?:\/\/.*youtu\.be\/(.*?)(\?.*)?$/,
-      ];
+      const patterns = [/https:\/\/.*youtube\.com.*v=(.*?)(&.*)?$/, /https?:\/\/.*youtu\.be\/(.*?)(\?.*)?$/];
       const pattern = patterns.find((e) => e.exec(this.media));
       return this.media && pattern ? this.media.replace(pattern, (m, code) => code) : false;
     },
@@ -40,8 +37,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+li
+  margin auto 18px
 .partner
-  margin 8px
   min-width 80px
 </style>
 <style lang="stylus">

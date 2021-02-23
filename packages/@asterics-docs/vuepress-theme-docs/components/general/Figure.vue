@@ -33,10 +33,7 @@ export default {
 .container, img
   width 100%
   height 100%
-  // width fill-content
-  // height fill-content
-  // padding 0
-  // margin 0 4px
+  vertical-align middle
 img
   object-fit cover
 
