@@ -1,6 +1,6 @@
 {
   "name": "@asterics-docs/vuepress-plugin-asterics-docs-tool",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "Vuepress cli plugin for documentation management of AsTeRICS",
   "license": "GPL-3.0",
   "author": "Alija Sabic <sabic.alija@gmail.com>",

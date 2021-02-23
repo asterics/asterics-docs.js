@@ -1,6 +1,6 @@
 {
   "name": "@asterics-docs/shared-utils",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.2-alpha.1",
   "description": "shared utilities for asterics-docs",
   "license": "GPL-3.0",
   "main": "lib/index.js",
