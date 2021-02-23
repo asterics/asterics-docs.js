@@ -1,6 +1,6 @@
 {
   "name": "@asterics-docs/core",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.2-alpha.1",
   "description": "> TODO: description",
   "author": "Alija Sabic <sabic.alija@gmail.com>",
   "homepage": "https://github.com/asterics/asterics-docs.js#readme",
@@ -20,9 +20,10 @@
     "build": "babel src --config.file ../../../babel.config.js --out-dir lib --extensions \".js,.jsx\" --source-maps"
   },
   "dependencies": {
-    "@asterics-docs/shared-utils": "^0.0.2-alpha.0"
+    "@asterics-docs/shared-utils": "^0.0.2-alpha.1"
   },
   "engines": {
     "node": ">=10.15"
-  }
+  },
+  "gitHead": "50c8673819bbb8b86dedba6e9572f40d91bdbac0"
 }
