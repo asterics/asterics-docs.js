@@ -17,10 +17,7 @@ export default {
   align-items center
   padding-left 0
   list-style-type none
-  min-height 8rem
   & > li
-    line-height 8rem
-    height 8rem
     justify-content center
     flex-basis 0
     flex-grow 1

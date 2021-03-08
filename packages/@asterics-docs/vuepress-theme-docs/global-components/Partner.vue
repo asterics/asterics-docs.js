@@ -1,7 +1,7 @@
 <template>
   <li>
     <Linker v-if="media && !isYoutube" :to="href" class="partner">
-      <Figure :src="media" :zoom="false" :alt="alt" />
+      <Figure :src="media" :zoom="false" :alt="alt" :scale="Number(scale)" />
     </Linker>
   </li>
 </template>
@@ -24,6 +24,10 @@ export default {
     href: {
       type: String,
       default: "",
+    },
+    scale: {
+      type: String,
+      default: "1",
     },
   },
   computed: {

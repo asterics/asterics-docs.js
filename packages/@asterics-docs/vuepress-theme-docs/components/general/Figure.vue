@@ -1,6 +1,6 @@
 <template>
   <div class="container" :class="{ 'no-zoom': !zoom }">
-    <img :src="source" :alt="alt" />
+    <img :src="source" :style="{ transform: `scale(${scale})` }" :alt="alt" />
   </div>
 </template>
 
@@ -19,6 +19,10 @@ export default {
     alt: {
       type: String,
       default: "",
+    },
+    scale: {
+      type: Number,
+      default: 1,
     },
   },
   computed: {
