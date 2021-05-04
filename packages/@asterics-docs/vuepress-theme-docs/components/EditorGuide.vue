@@ -1,10 +1,6 @@
 <template>
-  <router-link :to="target" :target="valid ? '_blank' : ''" :rel="valid ? 'noopener' : ''">
-    <font-awesome-icon
-      id="editor-guide"
-      class="icon outbound"
-      :icon="['fab', 'markdown']"
-    ></font-awesome-icon>
+  <router-link :to="target" :target="valid ? '_blank' : ''" :rel="valid ? 'noopener' : ''" title="Open Editor Guide">
+    <font-awesome-icon id="editor-guide" class="icon outbound" :icon="['fas', 'hands-helping']"> </font-awesome-icon>
   </router-link>
 </template>
 
@@ -21,9 +17,7 @@ export default {
       return this.valid ? this.path : "#";
     },
     valid() {
-      return (
-        typeof this.$site.pages.find(({ regularPath }) => regularPath === this.path) !== "undefined"
-      );
+      return typeof this.$site.pages.find(({ regularPath }) => regularPath === this.path) !== "undefined";
     },
   },
 };
@@ -35,7 +29,8 @@ export default {
   .dark-mode &
     color $darkModeTextColor
   &:hover, /.page-edit:hover &
-    color $accentColor
+    // color $accentColor
+    color #45b784
     .dark-mode &
       color $darkModeTextColor
 </style>

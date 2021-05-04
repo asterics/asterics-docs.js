@@ -1,20 +1,15 @@
 <template>
-  <router-link
-    :to="target"
-    :target="valid ? '_blank' : ''"
-    :rel="valid ? 'noopener' : ''"
-    title="Open AsTeRICS Docs Guide"
-  >
-    <font-awesome-icon id="docs-guide" class="icon outbound" icon="info-circle"></font-awesome-icon>
+  <router-link :to="target" :target="valid ? '_blank' : ''" :rel="valid ? 'noopener' : ''" title="Open Markdown Guide">
+    <font-awesome-icon id="markdown-guide" class="icon outbound" :icon="['fab', 'markdown']"></font-awesome-icon>
   </router-link>
 </template>
 
 <script>
 export default {
-  name: "DocsGuide",
+  name: "EditorGuide",
   data() {
     return {
-      path: "/guide/docs.html",
+      path: "/guide/markdown.html",
     };
   },
   computed: {
@@ -29,12 +24,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-#docs-guide
+#markdown-guide
   height 0.9rem
   .dark-mode &
-    color lighten($darkModeTextColor,25%)
+    color $darkModeTextColor
   &:hover, /.page-edit:hover &
-    color darken($accentColor,70%)
+    color $accentColor
     .dark-mode &
-      color darken($darkModeTextColor,40%)
+      color $darkModeTextColor
 </style>
