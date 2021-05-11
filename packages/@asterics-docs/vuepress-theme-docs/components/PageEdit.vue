@@ -6,9 +6,24 @@
         <a :href="$page.editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
         <OutboundLink />
         <span class="edit-guides">
-          <EditorGuide />
-          <MarkdownGuide />
-          <DocsGuide />
+          <FancyLink
+            id="editor-guide"
+            path="/guide/editor.html"
+            :icon="['fas', 'pencil-alt']"
+            title="Open Editor Guide"
+          />
+          <FancyLink
+            id="markdown-guide"
+            path="/guide/markdown.html"
+            :icon="['fab', 'markdown']"
+            title="Open Markdown Guide"
+          />
+          <FancyLink
+            id="developer-guide"
+            path="/guide/docs.html"
+            :icon="['fas', 'info-circle']"
+            title="Open Developer Guide"
+          />
         </span>
       </div>
     </div>
@@ -21,18 +36,12 @@
 </template>
 
 <script>
-import EditorGuide from "@theme/components/EditorGuide.vue";
-import MarkdownGuide from "@theme/components/MarkdownGuide.vue";
-import DocsGuide from "@theme/components/DocsGuide.vue";
+import FancyLink from "@theme/components/FancyLink.vue";
 
 export default {
   name: "PageEdit",
 
-  components: {
-    MarkdownGuide,
-    EditorGuide,
-    DocsGuide,
-  },
+  components: { FancyLink },
 
   computed: {
     lastUpdated() {
@@ -81,19 +90,22 @@ $wrapper
     display inline-block
     a
       color lighten($textColor, 25%)
-    a, svg
+    svg, .edit-guides a
       margin-right 0.25rem
     a > svg
       margin-right 0rem
-    .edit-preamble
+    .edit-preamble, .edit-text
       font-style italic
-      color lighten($textColor, 50%)
+    .edit-preamble, .edit-guides a
+      color lighten($textColor, 66.6%)
 
-  // & .edit-guides
-  //   opacity 0
-
-  // &:hover .edit-guides
-  //   opacity 1
+  &:hover
+    #editor-guide
+      color #45b784
+    #markdown-guide
+      color $accentColor
+    #developer-guide
+      color darken($accentColor,70%)
 
   .last-updated
     float right
