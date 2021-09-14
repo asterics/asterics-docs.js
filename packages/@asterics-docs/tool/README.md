@@ -5,10 +5,9 @@ sidebar: auto
 # Developer Guide
 
 This guide describes all steps required to build the website at [https://www.asterics.eu](https://www.asterics.eu).
-
 ## Requirements
 
-Following tools need to be setup on you machine:
+Following tools need to be setup on your machine:
 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [node](https://nodejs.org/en/download/)

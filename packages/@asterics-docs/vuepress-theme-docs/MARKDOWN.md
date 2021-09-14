@@ -4,7 +4,7 @@ sidebar: auto
 
 # Markdown Guide
 
-The following sections describe markdown syntax supported by the [theme](https://www.npmjs.com/package/@asterics-docs/vuepress-theme-docs) of this website:
+This guide describes the supported markdown syntax provided by the [theme](https://www.npmjs.com/package/@asterics-docs/vuepress-theme-docs) of the [https://www.asterics.eu](https://www.asterics.eu):
 
 - [Markdown](#markdown): supported markdown syntax.
 - [Frontmatter](#frontmatter): supported frontmatter properties.
