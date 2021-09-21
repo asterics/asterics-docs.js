@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# Markdown Guide
+# Website Markdown Guide
 
 This guide describes the supported markdown syntax provided by the [theme](https://www.npmjs.com/package/@asterics-docs/vuepress-theme-docs) of the [https://www.asterics.eu](https://www.asterics.eu):
 

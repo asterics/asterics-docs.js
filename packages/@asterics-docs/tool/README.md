@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# Developer Guide
+# Website Developer Guide
 
 This guide describes all steps required to build the website at [https://www.asterics.eu](https://www.asterics.eu).
 ## Requirements
