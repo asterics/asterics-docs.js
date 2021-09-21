@@ -10,19 +10,19 @@
             id="editor-guide"
             path="/guide/editor.html"
             :icon="['fas', 'pencil-alt']"
-            title="Open Editor Guide"
+            title="Open Website Editor Guide"
           />
           <FancyLink
             id="markdown-guide"
             path="/guide/markdown.html"
             :icon="['fab', 'markdown']"
-            title="Open Markdown Guide"
+            title="Open Website Markdown Guide"
           />
           <FancyLink
             id="developer-guide"
             path="/guide/docs.html"
             :icon="['fas', 'info-circle']"
-            title="Open Developer Guide"
+            title="Open Website Developer Guide"
           />
         </span>
       </div>
