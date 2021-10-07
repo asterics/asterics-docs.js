@@ -131,6 +131,24 @@ This is a details block, which does not work in IE / Edge
 :::
 
 For more information, see [Custom Containers](https://vuepress.vuejs.org/guide/markdown.html#custom-containers).
+
+## Model Links
+
+When describing a text related to a certain AsTeRICS model file, it is good practice to directly link to that file in the AsTeRICS github repository. This can be done using the **online WebACS application** and the openFile query parameter which must contain the URL of the model file that should be opened within the WebACS application. 
+See example below:
+
+```
+[Single Switch Model](http://webacs.asterics.eu/?areBaseURI=http://127.0.0.1:8081&openFile=https://raw.githubusercontent.com/asterics/AsTeRICS/master/bin/ARE/models/useCaseDemos/mouseControl/crosshairCursorControl_1key.acs)
+```
+This will be rendered as a normal link opening the model file in the WebACS application:
+
+[Single Switch Model](http://webacs.asterics.eu/?areBaseURI=http://127.0.0.1:8081&openFile=https://raw.githubusercontent.com/asterics/AsTeRICS/master/bin/ARE/models/useCaseDemos/mouseControl/crosshairCursorControl_1key.acs)
+
+The value of ```openFile``` must be replaced by the raw link of the model file on github. To get the link, navigate to the model file in the github repository and 
+
+1. Open the file by clicking on it
+2. Click on the Raw button.
+3. Copy the URL in the browser address bar. It should start with: https://raw.githubusercontent.com/asterics/AsTeRICS/....
   
 ## Frontmatter
 
