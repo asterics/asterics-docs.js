@@ -27,8 +27,8 @@ Testing the changes is not possible when editing the files remotely, but GitHub 
 
 ![GitHub Editing - Preview](./github-edit-preview.png "GitHub Editing - Preview")
 
-Note, however, that GitHub supports only a subset of the [markdown features](/guide/markdown)  supported by this website.
-The preview does not show how a _definitive_ preview of the page of this website, after incorporating new updates.
+Note, however, that GitHub supports only a **subset** of the markdown features described in the [markdown guide](/guide/markdown.html) of this website.
+The preview does not show the same _style_ of the page as shown on [https://www.asterics.eu](https://www.asterics.eu).
 
 After you finish editing a file, you can commit your changes to the repository.
 
