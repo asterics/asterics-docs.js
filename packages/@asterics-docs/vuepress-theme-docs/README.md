@@ -27,10 +27,10 @@ Testing the changes is not possible when editing the files remotely, but GitHub 
 
 ![GitHub Editing - Preview](./github-edit-preview.png "GitHub Editing - Preview")
 
-Note, however, that GitHub supports only a subset of the [markdown features]](/guide/markdown)  supported by this website.
+Note, however, that GitHub supports only a subset of the [markdown features](/guide/markdown)  supported by this website.
 The preview does not show how a _definitive_ preview of the page of this website, after incorporating new updates.
 
-After you finish editing a file, you can commit your changes to repository.
+After you finish editing a file, you can commit your changes to the repository.
 
 ![Github Editing - Commit](./github-edit-commit-explanation.png "GitHub Editing - Commit")
 
@@ -106,7 +106,7 @@ success [13:13:42] Build 6b0cef finished in 400 ms! ( http://localhost:8080/ )
 Afterwards you need to perform the desired changes within the files inside `docs/`.
 When saving changes inside those files, a new build is triggered and the content displayed in the browser is updated, automatically.
 
-After finishing editing the files, you need to create a pull request or commit and push your changes to the source repository.
+After finishing editing the files, you need to create a pull request or commit and push your changes to the source repository. Please check the [developer guide](/guide/docs.html) for this purpose.
 
 ## Publishing Updates
 
