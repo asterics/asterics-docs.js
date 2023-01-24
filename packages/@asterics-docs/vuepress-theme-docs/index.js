@@ -26,16 +26,21 @@ module.exports = (themeConfig, ctx) => {
         ],
       },
     ],
+    ["directory-classifier", hubDirectoryClassifierPluginOptions],
+    ["@studyathome-internationally/vuepress-plugin-pwa-autoload"],
+    [
+      "@vuepress/pwa",
+      {
+        serviceWorker: true,
+        popupComponent: "AutoSWUpdatePopup",
+        updatePopup: true,
+      },
+    ],
     [
       "@vuepress/search",
       {
         searchMaxSuggestions: 10,
-        test: [
-          "/",
-          ...themeConfig.versions
-            .slice(1, themeConfig.versions.length)
-            .map((version) => `/${version}/`),
-        ],
+        test: ["/", ...themeConfig.versions.slice(1, themeConfig.versions.length).map((version) => `/${version}/`)],
       },
     ],
   ];
