@@ -26,7 +26,6 @@ module.exports = (themeConfig, ctx) => {
         ],
       },
     ],
-    ["directory-classifier", hubDirectoryClassifierPluginOptions],
     ["@studyathome-internationally/vuepress-plugin-pwa-autoload"],
     [
       "@vuepress/pwa",
