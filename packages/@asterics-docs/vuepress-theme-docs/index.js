@@ -26,6 +26,15 @@ module.exports = (themeConfig, ctx) => {
         ],
       },
     ],
+    [
+      "@studyathome-internationally/vuepress-plugin-searchbox",
+      {
+        appId: "IAKC6EFA2A",
+        apiKey: "b5ebd24ffe57355ee03659ece59e30e9",
+        indexName: "asterics.eu",
+        disableUserPersonalization: true,
+      },
+    ],
     ["@studyathome-internationally/vuepress-plugin-pwa-autoload"],
     [
       "@vuepress/pwa",
