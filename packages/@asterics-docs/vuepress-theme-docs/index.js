@@ -44,13 +44,13 @@ module.exports = (themeConfig, ctx) => {
         updatePopup: true,
       },
     ],
-    [
-      "@vuepress/search",
-      {
-        searchMaxSuggestions: 10,
-        test: ["/", ...themeConfig.versions.slice(1, themeConfig.versions.length).map((version) => `/${version}/`)],
-      },
-    ],
+    // [
+    //   "@vuepress/search",
+    //   {
+    //     searchMaxSuggestions: 10,
+    //     test: ["/", ...themeConfig.versions.slice(1, themeConfig.versions.length).map((version) => `/${version}/`)],
+    //   },
+    // ],
   ];
   const globalUIComponents = ["SettingsView", "BackToTop", "ToastsView"];
 
