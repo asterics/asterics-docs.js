@@ -2244,10 +2244,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@studyathome-internationally/vuepress-plugin-pwa-autoload@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@studyathome-internationally/vuepress-plugin-pwa-autoload/-/vuepress-plugin-pwa-autoload-0.0.1.tgz#ac5d13202d3a6025526efe398e6fceb4e05aa3b0"
-  integrity sha512-5RMr08WTidHjKazDIHty+2KEaxztIGo1bDvVeluE2HJ0nnZLhmHyRadeY+NDG4+DMsujEmZ32fIL8DZ9/G3yEA==
+"@studyathome-internationally/vuepress-plugin-pwa-autoload@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@studyathome-internationally/vuepress-plugin-pwa-autoload/-/vuepress-plugin-pwa-autoload-0.0.2.tgz#7108c1a3752aade505f1acb425463c3c31ee0965"
+  integrity sha512-DQ+5fLvWkeQFwibfzPBQs4grCS54QLzFX6znfqVJaQ1xjdI2o9N/ECVQh+zCM7GX31XHeeHtuWPkM6vaDl2+Dg==
 
 "@studyathome-internationally/vuepress-plugin-searchbox@^0.0.2":
   version "0.0.2"
