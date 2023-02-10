@@ -29,8 +29,8 @@ module.exports = (themeConfig, ctx) => {
     [
       "@studyathome-internationally/vuepress-plugin-searchbox",
       {
-        appId: "IAKC6EFA2A",
-        apiKey: "b5ebd24ffe57355ee03659ece59e30e9",
+        appId: "JSPRUOOKS2",
+        apiKey: "f413d292a844662b729ae6896d3037e9",
         indexName: "asterics.eu",
         disableUserPersonalization: true,
       },
