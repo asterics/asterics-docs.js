@@ -39,7 +39,7 @@ module.exports = (themeConfig, ctx) => {
     [
       "@vuepress/pwa",
       {
-        serviceWorker: true,
+        serviceWorker: false,
         popupComponent: "AutoSWUpdatePopup",
         updatePopup: true,
       },
@@ -81,7 +81,7 @@ function configureMarkdown(md) {
   md.use(require("markdown-it-kbd"));
   md.use(require("markdown-it-attrs"));
   md.use(require("markdown-it-fontawesome"));
-  md.renderer.rules.emoji = function(token, idx) {
+  md.renderer.rules.emoji = function (token, idx) {
     return twemoji.parse(token[idx].content, {
       base: "https://twemoji.maxcdn.com/2/",
       ext: ".svg",
