@@ -39,9 +39,13 @@ module.exports = (themeConfig, ctx) => {
     [
       "@vuepress/pwa",
       {
-        serviceWorker: false,
-        popupComponent: "AutoSWUpdatePopup",
+        serviceWorker: true,
         updatePopup: true,
+        popupComponent: "AutoSWUpdatePopup",
+        generateSWConfig: {
+          globPatterns: [],
+          globIgnores: [],
+        },
       },
     ],
     // [
