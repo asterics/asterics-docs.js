@@ -15,7 +15,7 @@
     <span class="nav-addon">
       <!-- settings -->
       <ClientOnly>
-        <OpenCollective />
+        <!-- <OpenCollective /> -->
         <SettingsButton class="nav-item" @toggle-sidebar="$emit('toggle-sidebar')" />
       </ClientOnly>
       <!-- version links -->
@@ -33,7 +33,7 @@ import NavLink from "@parent-theme/components/NavLink.vue";
 import VersionLinks from "@theme/components/navbar/VersionLinks.vue";
 import SettingsButton from "@theme/components/settings/SettingsButton.vue";
 import GoogleTranslate from "@theme/components/third-party/GoogleTranslate.vue";
-import OpenCollective from "@theme/components/third-party/OpenCollective.vue";
+// import OpenCollective from "@theme/components/third-party/OpenCollective.vue";
 
 export default {
   name: "NavLinks",
@@ -44,7 +44,7 @@ export default {
     VersionLinks,
     SettingsButton,
     GoogleTranslate,
-    OpenCollective,
+    // OpenCollective,
   },
 
   computed: {
